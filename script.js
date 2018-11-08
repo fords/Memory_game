@@ -48,12 +48,21 @@ class MixOrMatch {
     this.timeRemaining = this.totalTime
     this.matchedCards = []
     this.buys = true
+    this.shuffleCards()
   }
   flipCard(card){
     if(this.canFlipCard(card)){
       this.audioController.flip()
       this.totalClicks += 1
       this.ticker.innerText = this.totalClicks
+      card.classList.add('visible')
+    }
+  }
+  shuffleCards(){
+    for( let i = this.cardsArray.length - 1; i > 0; i-- ){
+      let randIndex = Math.floor(Math.random()*(i+1))
+      this.cardsArray[randIndex].style.order = i
+      this.cardsArray[i].style.order = randIndex
     }
   }
   canFlipCard(card){
