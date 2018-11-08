@@ -24,7 +24,7 @@ class AudioController {
   }
   victory() {
     this.stopMusic()
-    this.victory.play()
+    this.victorySound.play()
   }
   gameOver(){
     this.stopMusic()
