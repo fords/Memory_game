@@ -84,6 +84,7 @@ class MixOrMatch {
     clearInterval(this.countdown)
     this.audioController.victory()
     document.getElementById('victory-text').classList.add('visible')
+    this.hideCards()
   }
   flipCard(card){
     if(this.canFlipCard(card)){
