@@ -48,7 +48,13 @@ class MixOrMatch {
     this.timeRemaining = this.totalTime
     this.matchedCards = []
     this.busy = true
-
+    document.getElementById("status1").innerText = ("Time: ")
+    document.getElementById("status2").innerText = ('Moves: ')
+    document.getElementById("star1").style.visibility = "hidden";
+    document.getElementById("star2").style.visibility = "hidden";
+    document.getElementById("star3").style.visibility = "hidden";
+    document.getElementById("star4").style.visibility = "hidden";
+    document.getElementById("star5").style.visibility = "hidden";
     setTimeout(() => {
       this.audioController.startMusic()
       this.shuffleCards()
@@ -58,6 +64,7 @@ class MixOrMatch {
     this.hideCards()
     this.timer.innerText = this.timeRemaining
     this.ticker.innerText = this.totalClicks
+    //this.victory()
   }
   hideCards() {
     this.cardsArray.forEach(card => {
@@ -71,6 +78,7 @@ class MixOrMatch {
       this.timer.innerText = this.timeRemaining
       if ( this.timeRemaining === 0 ){
           this.gameOver()
+          // this.victory()
       }
     },1000)
   }
@@ -83,7 +91,52 @@ class MixOrMatch {
   victory() {
     clearInterval(this.countdown)
     this.audioController.victory()
+    var time_play = this.totalTime - this.timeRemaining
     document.getElementById('victory-text').classList.add('visible')
+   document.getElementById("status1").innerText += ' '+ time_play +' sec(s)'
+   document.getElementById("status2").innerText += ' '+ this.totalClicks
+   if (this.totalTime - this.timeRemaining < 30 && this.totalClicks < 30) {
+     document.getElementById("star1").style.visibility = "visible";
+     document.getElementById("star2").style.visibility = "visible";
+     document.getElementById("star3").style.visibility = "visible";
+     document.getElementById("star4").style.visibility = "visible";
+     document.getElementById("star5").style.visibility = "visible";
+   }
+   else if (this.totalTime - this.timeRemaining < 40 && this.totalClicks < 40) {
+     document.getElementById("star1").style.visibility = "visible";
+     document.getElementById("star2").style.visibility = "visible";
+     document.getElementById("star3").style.visibility = "visible";
+     document.getElementById("star4").style.visibility = "visible";
+     document.getElementById("star5").style.visibility = "hidden";
+  }
+  else if (this.totalClicks < 50) {
+    document.getElementById("star1").style.visibility = "visible";
+    document.getElementById("star2").style.visibility = "visible";
+    document.getElementById("star3").style.visibility = "visible";
+    document.getElementById("star4").style.visibility = "hidden";
+    document.getElementById("star5").style.visibility = "hidden";
+  }
+  else if (this.totalClicks < 60){
+    document.getElementById("star1").style.visibility = "visible";
+    document.getElementById("star2").style.visibility = "visible";
+    document.getElementById("star3").style.visibility = "hidden";
+    document.getElementById("star4").style.visibility = "hidden";
+    document.getElementById("star5").style.visibility = "hidden";
+  }
+  else{
+    document.getElementById("star1").style.visibility = "visible";
+    document.getElementById("star2").style.visibility = "hidden";
+    document.getElementById("star3").style.visibility = "hidden";
+    document.getElementById("star4").style.visibility = "hidden";
+    document.getElementById("star5").style.visibility = "hidden";
+  }
+   // document.getElementById('star2').classList.remove('visible')
+   // document.getElementById('star3').classList.remove('visible')
+   // document.getElementById('star4').classList.remove('visible')
+   // document.getElementById('star5').classList.add('visible')
+    // $('#status1').innertext('time_play')
+    // add stars
+
     this.hideCards()
   }
   flipCard(card){
@@ -146,10 +199,12 @@ function ready(){
   let overlays = Array.from(document.getElementsByClassName('overlay-text'))
   let cards = Array.from(document.getElementsByClassName('card'))
   let game = new MixOrMatch(100, cards)
+  // document.getElementsByClassName('game-status')
   overlays.forEach(overlay => {
     overlay.addEventListener('click', () => {
       overlay.classList.remove('visible');
       game.startGame()
+      // victory()
       // var audioController = new AudioController()
       // audioController.startMusic()
       // var audio = new Audio('Assets/Audio/creepy.mp3');

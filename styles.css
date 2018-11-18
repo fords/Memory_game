@@ -41,7 +41,9 @@ body {
   color: #FFBB89;
   font-size: 4em;
 }
-
+.checked {
+    color: orange;
+}
 .game-container {
   display: grid;
   grid-template-columns: repeat(4, auto);
@@ -101,7 +103,10 @@ body {
   color: #FF6D00;
   font-family: Creepy, serif;
 }
-
+.text-small {
+  font-size: 0.3em;
+  font-family: serif;
+}
 .overlay-text-small {
   font-size: 0.3em;
 }
