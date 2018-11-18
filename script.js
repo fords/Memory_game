@@ -93,52 +93,47 @@ class MixOrMatch {
     this.audioController.victory()
     var time_play = this.totalTime - this.timeRemaining
     document.getElementById('victory-text').classList.add('visible')
-   document.getElementById("status1").innerText += ' '+ time_play +' sec(s)'
-   document.getElementById("status2").innerText += ' '+ this.totalClicks
-   if (this.totalTime - this.timeRemaining < 30 && this.totalClicks < 30) {
-     document.getElementById("star1").style.visibility = "visible";
-     document.getElementById("star2").style.visibility = "visible";
-     document.getElementById("star3").style.visibility = "visible";
-     document.getElementById("star4").style.visibility = "visible";
-     document.getElementById("star5").style.visibility = "visible";
-   }
-   else if (this.totalTime - this.timeRemaining < 40 && this.totalClicks < 40) {
-     document.getElementById("star1").style.visibility = "visible";
-     document.getElementById("star2").style.visibility = "visible";
-     document.getElementById("star3").style.visibility = "visible";
-     document.getElementById("star4").style.visibility = "visible";
-     document.getElementById("star5").style.visibility = "hidden";
-  }
-  else if (this.totalClicks < 50) {
-    document.getElementById("star1").style.visibility = "visible";
-    document.getElementById("star2").style.visibility = "visible";
-    document.getElementById("star3").style.visibility = "visible";
-    document.getElementById("star4").style.visibility = "hidden";
-    document.getElementById("star5").style.visibility = "hidden";
-  }
-  else if (this.totalClicks < 60){
-    document.getElementById("star1").style.visibility = "visible";
-    document.getElementById("star2").style.visibility = "visible";
-    document.getElementById("star3").style.visibility = "hidden";
-    document.getElementById("star4").style.visibility = "hidden";
-    document.getElementById("star5").style.visibility = "hidden";
-  }
-  else{
-    document.getElementById("star1").style.visibility = "visible";
-    document.getElementById("star2").style.visibility = "hidden";
-    document.getElementById("star3").style.visibility = "hidden";
-    document.getElementById("star4").style.visibility = "hidden";
-    document.getElementById("star5").style.visibility = "hidden";
-  }
-   // document.getElementById('star2').classList.remove('visible')
-   // document.getElementById('star3').classList.remove('visible')
-   // document.getElementById('star4').classList.remove('visible')
-   // document.getElementById('star5').classList.add('visible')
-    // $('#status1').innertext('time_play')
-    // add stars
-
+    document.getElementById("status1").innerText += ' '+ time_play +' sec(s)'
     this.hideCards()
+    document.getElementById("status2").innerText += ' '+ this.totalClicks
+    if (this.totalTime - this.timeRemaining < 30 && this.totalClicks < 30) {
+       document.getElementById("star1").style.visibility = "visible";
+       document.getElementById("star2").style.visibility = "visible";
+       document.getElementById("star3").style.visibility = "visible";
+       document.getElementById("star4").style.visibility = "visible";
+       document.getElementById("star5").style.visibility = "visible";
+    }
+    else if (this.totalTime - this.timeRemaining < 40 && this.totalClicks < 40) {
+       document.getElementById("star1").style.visibility = "visible";
+       document.getElementById("star2").style.visibility = "visible";
+       document.getElementById("star3").style.visibility = "visible";
+       document.getElementById("star4").style.visibility = "visible";
+       document.getElementById("star5").style.visibility = "hidden";
+   }
+   else if (this.totalClicks < 50) {
+      document.getElementById("star1").style.visibility = "visible";
+      document.getElementById("star2").style.visibility = "visible";
+      document.getElementById("star3").style.visibility = "visible";
+      document.getElementById("star4").style.visibility = "hidden";
+      document.getElementById("star5").style.visibility = "hidden";
+   }
+   else if (this.totalClicks < 60){
+      document.getElementById("star1").style.visibility = "visible";
+      document.getElementById("star2").style.visibility = "visible";
+      document.getElementById("star3").style.visibility = "hidden";
+      document.getElementById("star4").style.visibility = "hidden";
+      document.getElementById("star5").style.visibility = "hidden";
+   }
+   else{
+      document.getElementById("star1").style.visibility = "visible";
+      document.getElementById("star2").style.visibility = "hidden";
+      document.getElementById("star3").style.visibility = "hidden";
+      document.getElementById("star4").style.visibility = "hidden";
+      document.getElementById("star5").style.visibility = "hidden";
+   }
+    // $('#status1').innertext('time_play')
   }
+
   flipCard(card){
     if(this.canFlipCard(card)){
       this.audioController.flip()
