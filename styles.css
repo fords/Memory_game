@@ -41,8 +41,13 @@ body {
   color: #FFBB89;
   font-size: 4em;
 }
+
+.unchecked {
+  color: white;
+}
+
 .checked {
-    color: orange;
+  color: orange;
 }
 .game-container {
   display: grid;

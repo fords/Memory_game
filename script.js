@@ -55,6 +55,17 @@ class MixOrMatch {
     document.getElementById("star3").style.visibility = "hidden";
     document.getElementById("star4").style.visibility = "hidden";
     document.getElementById("star5").style.visibility = "hidden";
+    document.getElementById("star1").classList.remove("unchecked");
+    document.getElementById("star1").classList.add("checked");
+    document.getElementById("star2").classList.remove("unchecked");
+    document.getElementById("star2").classList.add("checked");
+    document.getElementById("star3").classList.remove("unchecked");
+    document.getElementById("star3").classList.add("checked");
+    document.getElementById("star4").classList.remove("unchecked");
+    document.getElementById("star4").classList.add("checked");
+    document.getElementById("star5").classList.remove("unchecked");
+    document.getElementById("star5").classList.add("checked");
+
     setTimeout(() => {
       this.audioController.startMusic()
       this.shuffleCards()
@@ -96,41 +107,43 @@ class MixOrMatch {
     document.getElementById("status1").innerText += ' '+ time_play +' sec(s)'
     this.hideCards()
     document.getElementById("status2").innerText += ' '+ this.totalClicks
+    document.getElementById("star1").style.visibility = "visible";
+    document.getElementById("star2").style.visibility = "visible";
+    document.getElementById("star3").style.visibility = "visible";
+    document.getElementById("star4").style.visibility = "visible";
+    document.getElementById("star5").style.visibility = "visible";
+
     if (this.totalTime - this.timeRemaining < 30 && this.totalClicks < 30) {
-       document.getElementById("star1").style.visibility = "visible";
-       document.getElementById("star2").style.visibility = "visible";
-       document.getElementById("star3").style.visibility = "visible";
-       document.getElementById("star4").style.visibility = "visible";
-       document.getElementById("star5").style.visibility = "visible";
     }
     else if (this.totalTime - this.timeRemaining < 40 && this.totalClicks < 40) {
-       document.getElementById("star1").style.visibility = "visible";
-       document.getElementById("star2").style.visibility = "visible";
-       document.getElementById("star3").style.visibility = "visible";
-       document.getElementById("star4").style.visibility = "visible";
-       document.getElementById("star5").style.visibility = "hidden";
-   }
-   else if (this.totalClicks < 50) {
-      document.getElementById("star1").style.visibility = "visible";
-      document.getElementById("star2").style.visibility = "visible";
-      document.getElementById("star3").style.visibility = "visible";
-      document.getElementById("star4").style.visibility = "hidden";
-      document.getElementById("star5").style.visibility = "hidden";
-   }
-   else if (this.totalClicks < 60){
-      document.getElementById("star1").style.visibility = "visible";
-      document.getElementById("star2").style.visibility = "visible";
-      document.getElementById("star3").style.visibility = "hidden";
-      document.getElementById("star4").style.visibility = "hidden";
-      document.getElementById("star5").style.visibility = "hidden";
-   }
-   else{
-      document.getElementById("star1").style.visibility = "visible";
-      document.getElementById("star2").style.visibility = "hidden";
-      document.getElementById("star3").style.visibility = "hidden";
-      document.getElementById("star4").style.visibility = "hidden";
-      document.getElementById("star5").style.visibility = "hidden";
-   }
+       document.getElementById("star5").classList.remove("checked");
+       document.getElementById("star5").classList.add("unchecked");
+    }
+    else if (this.totalClicks < 50) {
+       document.getElementById("star4").classList.remove("checked");
+       document.getElementById("star4").classList.add("unchecked");
+       document.getElementById("star5").classList.remove("checked");
+       document.getElementById("star5").classList.add("unchecked");
+     }
+    else if (this.totalClicks < 60){
+       document.getElementById("star3").classList.remove("checked");
+       document.getElementById("star3").classList.add("unchecked");
+       document.getElementById("star4").classList.remove("checked");
+       document.getElementById("star4").classList.add("unchecked");
+       document.getElementById("star5").classList.remove("checked");
+       document.getElementById("star5").classList.add("unchecked");
+    }
+    else{
+       document.getElementById("star2").classList.remove("checked");
+       document.getElementById("star2").classList.add("unchecked");
+       document.getElementById("star3").classList.remove("checked");
+       document.getElementById("star3").classList.add("unchecked");
+       document.getElementById("star4").classList.remove("checked");
+       document.getElementById("star4").classList.add("unchecked");
+       document.getElementById("star5").classList.remove("checked");
+       document.getElementById("star5").classList.add("unchecked");
+
+    }
     // $('#status1').innertext('time_play')
   }
 
@@ -193,7 +206,7 @@ class MixOrMatch {
 function ready(){
   let overlays = Array.from(document.getElementsByClassName('overlay-text'))
   let cards = Array.from(document.getElementsByClassName('card'))
-  let game = new MixOrMatch(100, cards)
+  let game = new MixOrMatch(60, cards)
   // document.getElementsByClassName('game-status')
   overlays.forEach(overlay => {
     overlay.addEventListener('click', () => {
